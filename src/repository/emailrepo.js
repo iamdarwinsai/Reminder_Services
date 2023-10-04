@@ -31,6 +31,19 @@ class ReminderRepo{
             throw {error}
         }
     }
+
+    async updateStatus(dataId){
+        try {
+            const response=await ReminderService.findByPk(dataId);
+            if(response.status)
+                response.status="SUCCESS"
+                await response.save()
+            return response;
+        } catch (error) {
+            console.log("Something went wron in repo layer");
+            throw {error}
+        }
+    }
 }
 
 module.exports=ReminderRepo;

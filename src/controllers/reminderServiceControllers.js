@@ -14,8 +14,7 @@ const create = async (req, res) => {
 
 const getAll = async (req, res) => {
     try {
-        const response = await emailService.getAll(req.body);
-        console.log("controller",response);
+        const response = await emailService.fetchPendingEmails(req.body);
         return res.status(201).json({data: response, message: "Added message reminder", err: {}, success: true})
 
     } catch (error) {
