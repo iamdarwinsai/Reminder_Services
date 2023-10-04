@@ -3,17 +3,32 @@ const ReminderRepo = require("../repository/emailrepo");
 
 class EmailService {
 
-    constructor(){
-        this.emailRepo=new ReminderRepo();
+    constructor() {
+        this.emailRepo = new ReminderRepo();
     }
 
-    async create(data){
+    async create(data) {
         try {
-            const response =await this.emailRepo.create(data);
+            const response = await this.emailRepo.create(data);
             return response;
         } catch (error) {
             console.log("Something went wrong n service")
-            throw {error}
+            throw {
+                error
+            }
+        }
+    }
+
+    async getAll(data) {
+        try {
+            const response = await this.emailRepo.getAll(data);
+            console.log("service",response);
+            return response;
+        } catch (error) {
+            console.log("Something went wrong n service")
+            throw {
+                error
+            }
         }
     }
 
